@@ -1,0 +1,133 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-healthy: var(--healthy);
+  --color-warning: var(--warning);
+  --color-critical: var(--critical);
+  --color-unknown: var(--unknown);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: oklch(0.165 0.025 258);
+  --surface: oklch(0.195 0.028 258);
+  --surface-2: oklch(0.225 0.03 258);
+  --foreground: oklch(0.94 0.01 250);
+  --card: oklch(0.195 0.028 258);
+  --card-foreground: oklch(0.94 0.01 250);
+  --popover: oklch(0.24 0.03 258);
+  --popover-foreground: oklch(0.94 0.01 250);
+  --primary: oklch(0.78 0.12 215);
+  --primary-foreground: oklch(0.16 0.03 258);
+  --secondary: oklch(0.25 0.03 258);
+  --secondary-foreground: oklch(0.92 0.01 250);
+  --muted: oklch(0.23 0.028 258);
+  --muted-foreground: oklch(0.68 0.025 255);
+  --accent: oklch(0.27 0.04 240);
+  --accent-foreground: oklch(0.94 0.01 250);
+  --destructive: oklch(0.66 0.2 22);
+  --destructive-foreground: oklch(0.98 0 0);
+  --healthy: oklch(0.76 0.14 158);
+  --warning: oklch(0.8 0.14 75);
+  --critical: oklch(0.68 0.2 22);
+  --unknown: oklch(0.6 0.02 255);
+  --border: oklch(0.29 0.03 258);
+  --border-strong: oklch(0.36 0.035 258);
+  --input: oklch(0.3 0.03 258);
+  --ring: oklch(0.78 0.12 215);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility label-xs {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility grid-bg {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-border-strong) 60%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* React Flow theming */
+.react-flow__controls {
+  box-shadow: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  fill: var(--color-foreground);
+  color: var(--color-foreground);
+}
+.react-flow__controls-button:hover {
+  background: var(--color-accent);
+}
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__edge-text {
+  fill: var(--color-muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+.react-flow__edge-textbg {
+  fill: var(--color-background);
+}
